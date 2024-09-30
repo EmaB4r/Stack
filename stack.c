@@ -18,7 +18,7 @@ stack_t stack_init(unsigned size, unsigned item_size){
 void stack_push(stack_t* stack, void* item){
     if(stack->used_space+1 >= stack->stack_size){
         stack->stack_size*=1.5;
-        stack->data=realloc(stack->data, sizeof(uint8_t)*stack->stack_size);
+        stack->data=realloc(stack->data, stack->item_size*stack->stack_size);
     } 
     memcpy(&stack->data[stack->used_space*stack->item_size], item, stack->item_size);
     stack->used_space++;
